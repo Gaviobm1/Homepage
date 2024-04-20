@@ -1,35 +1,67 @@
+:root {
+  --shadow: 0em 0.2em 0.2em rgba(0, 0, 0, 0.2);
+  --left-attached: 0.3em 0em 0em 0.3em;
+  --right-attached: 0em 0.3em 0.3em 0em;
+  --vertical-attached-bottom: 0em 0em 0.3em 0.3em;
+  --vertical-attached-top: 0.3em 0.3em 0em 0em;
+  --all-corners: 0.3em;
+  box-sizing: border-box;
+}
+
+.backer-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  z-index: -1;
+}
+
+.backer-top svg {
+  position: relative;
+  display: block;
+  width: calc(266% + 1.3px);
+  height: 500px;
+}
+
+.backer-top .shape-fill {
+  fill: slateblue;
+}
+
 body {
-  background-color: #1B4D3E;
-  display: grid;
-  margin: 7em;
-  justify-items: center;
+  
+  margin: 0;
+  padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5em;
 }
 
 header {
+  margin: auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  max-width: 1000px;
-  justify-items: center;
   overflow: visible;
   border-radius: 0.3em;
+  margin-bottom: 2rem;
+  padding-top: 2em;
+  max-width: 1000px;
 }
 
 .personalinfo {
   display: grid;
   gap: 1em;
-  line-height: 1.5rem;
-  margin: 0em 1.9em 0em 0em;
   grid-area: 2 / 2 / 3 / 3;
   align-self: center;
   padding: 1.9em 1.9em 1.9em 0em;
-  box-shadow: 0em 0.2em 0.2em rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
   background-color: white;
-  border-radius: 0em 0.3em 0.3em 0em;
+  border-radius: var(--right-attached)
 }
 
 .piccontainer {
-  background-image: url(me-large.jpeg);
+  background-image: url(./pictures/me-large.jpeg);
   background-size: cover;
   width: 400px;
   height: 400px;
@@ -39,10 +71,11 @@ header {
   align-items: end;
   color: whitesmoke;
   font-size: 2rem;
+  line-height: 3rem;
   justify-self: end;
   align-self: self-start;
-  box-shadow: 0em 0.2em 0.2em rgba(0, 0, 0, 0.2);
-  border-radius: 0.3em;
+  box-shadow: var(--shadow);
+  border-radius: var(--all-corners);
 }
 
 .heading {
@@ -54,11 +87,6 @@ header {
   margin-left: 3em;
   grid-area: 2 / 1 / 3 / 2;
 }
-
-.icons {
-  grid-area: 3 / 1 / 4 / 2;
-}
-
 
 img {
   width: 100%;
@@ -72,59 +100,173 @@ img {
   gap: 1rem;
   height: 50px;
   justify-self: end;
+  grid-area: 3 / 1 / 4 / 2;
 }
 
 .icon {
   height: 50px;
   width: 50px;
-  
 }
-
 
 h2 {
   margin: 0;
 }
 
+main {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1em;
+  max-width: 1000px;
+  margin-bottom: 3rem;
+}
+.project {
+  border-radius: var(--all-corners);
+  box-shadow: var(--shadow);
+}
+
+.project-picture {
+  background-image: url(./pictures/todo-640.jpeg);
+  background-size: cover;
+  min-height: 200px;
+  border-radius: var(--vertical-attached-top);
+}
+
+.project-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-heading h3 {
+  margin: 0;
+}
+
+.project-heading img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.project-info {
+  border-radius: var(--all-corners);
+  background-color: white;
+  padding: 1rem;
+}
+
+.project-info p {
+  margin: 0;
+}
+
+footer {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+  color: white;
+  background-color: white;
+  background-color: transparent;
+  margin-bottom: 5em;
+}
+
+.contact {
+  padding: 1.5em;
+  background-color: slateblue;
+  border-radius: var(--left-attached);
+  box-shadow: var(--shadow)
+}
+
+.picture-contact {
+  background-image: url(./pictures/contact-me.JPG);
+  width: 100%;
+  background-size: cover;
+  justify-self: end;
+  border-radius: var(--right-attached);
+  box-shadow: var(--shadow);
+}
+
+.contact-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  stroke: #FFF;
+}
+
 @media (max-width: 500px) {
-  body {
-    margin-top: 2em;
-    justify-content: center;
-  }
 
   header {
-    gap: 1em;
+    grid-template-columns: 1fr;
+    padding-top: 2em;
+    margin: 0em 1em 2em 1em;
   }
 
   .piccontainer {
-    background-image: url(me-small.jpeg);
-    width: 350px;
-    height: 350px;
+    background-image: url(./pictures/me-small.jpeg);
+    width: 100%;
+    height: 300px;
     grid-area: 1 / 1 / 2 / 2;
-    font-size: 2rem;
-    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    border-radius: var(--vertical-attached-top);
   }
 
   .piccontainer > h1 {
     margin-left: 0.5em;
     margin-bottom: 0.5em;
   }
+
   .personalinfo {
-    grid-area: 2 / 1 / 4 / 2;
+    grid-area: 2 / 1 / 3 / 2;
     margin: 0;
-    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    border-radius: var(--vertical-attached-bottom);
   
   }
+
+  main {
+    margin: 2em 1em 2em 1em;
+  }
+
   .icons {
     justify-self: center;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+    padding-bottom: 2em;
+    background-color: transparent;
+    margin: 2em 1em 0em 1em;
+    gap: 0;
+  }
+
+  .picture-contact {
+    width: 100%;
+    height: 300px;
+    border-radius: var(--vertical-attached-bottom);
+    justify-self: center;
+    grid-area: 2 / 1 / 3 / 2;
+    box-shadow: var(--shadow);
+  }
+
+  .contact {
+    padding: 0.5em;
+    box-shadow: var(--shadow);
+    border-radius: var(--vertical-attached-top);
   }
 }
 
 @media (501px < width < 1100px) {
+  body {
+    margin: 5em;
+  }
+
   header {
     display: inline-block;
     background-color: white;
-    box-shadow: 0em 0.2em 0.2em rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow);
   }
+
   .piccontainer {
     float: left;
     transform: translate(-50px, -50px);
@@ -133,9 +275,13 @@ h2 {
   .piccontainer > h1 {
     margin: 0;
     font-size: 3rem;
-    color: white;
+    color: black;
     align-self: self-start;
-    transform: translate(17rem, -0.2em);
+    transform: translate(19.5rem, 2rem);
+  }
+
+  .in-pic {
+    color: white;
   }
 
   .personalinfo {
@@ -146,11 +292,16 @@ h2 {
     transform: translate(-30px, -30px);
     background-color: transparent;
   }
-  
   .icons {
-    float: right;
     padding: 20px;
+    padding-left: 0;
   }
+
+  .icons-top {
+    float: right;
+  }
+
+
 }
 
 
